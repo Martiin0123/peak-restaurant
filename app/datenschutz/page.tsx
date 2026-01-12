@@ -66,7 +66,7 @@ export default function DatenschutzPage() {
           </h2>
           <h3 className="text-xl font-bold mt-4 mb-2">Cookies</h3>
           <p>
-            Unsere Internetseiten verwenden so genannte &ldquo;Cookies&rdquo;.
+            Unsere Internetseiten verwenden so genannte &quot;Cookies&quot;.
             Cookies sind kleine Textdateien und richten auf Ihrem Endgerät
             keinen Schaden an. Sie werden entweder vorübergehend für die Dauer
             einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies)
