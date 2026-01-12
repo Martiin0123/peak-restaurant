@@ -19,7 +19,7 @@ import { useLanguage } from "./LanguageProvider";
  * - MICRO-INTERACTIONS: Magnetic scroll indicator.
  */
 export function Hero() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -98,7 +98,7 @@ export function Hero() {
               <div className="flex items-center gap-3 lg:flex-row-reverse">
                 <span className="w-4 h-4" /> {/* Spacer to align with icons */}
                 <span className="text-taupe">
-                  {t.language === "de"
+                  {language === "de"
                     ? "Jeden DO: Fondue Abend"
                     : "Every THU: Fondue Night"}
                 </span>
