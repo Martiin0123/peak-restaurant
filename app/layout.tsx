@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Afacad_Flux } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
+
+const afacadFlux = Afacad_Flux({
+  subsets: ["latin"],
+  variable: "--font-afacad",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "PEAK Restaurant",
@@ -23,10 +30,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body
-        className="font-sans antialiased"
-        style={{ fontFamily: "'Afacad Flux', system-ui, sans-serif" }}
-      >
+      <body className={`${afacadFlux.variable} font-sans antialiased`}>
         <LanguageProvider>
           <SkipLink />
           <div id="main-content" tabIndex={-1}>

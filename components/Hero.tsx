@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MapPin, Clock, Utensils } from "lucide-react";
+import Image from "next/image";
 import { useLanguage } from "./LanguageProvider";
 
 /**
@@ -32,12 +33,19 @@ export function Hero() {
     >
       {/* 1. BACKGROUND LAYERS */}
       <div className="absolute inset-0 z-0">
-        {/* Background Image */}
+        {/* Background Image - Optimized */}
         <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-linear scale-110"
-            style={{ backgroundImage: 'url("/Gallery1.jpeg")' }}
-          />
+          <div className="relative w-full h-full scale-110 transition-transform duration-[20s] ease-linear">
+            <Image
+              src="/Gallery1.jpeg"
+              alt="Peak Restaurant Ambience"
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="100vw"
+              quality={90}
+            />
+          </div>
         </div>
 
         {/* Dynamic Gradient Orb */}
