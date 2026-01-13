@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
 
 @layer base {
   :root {
@@ -12,6 +12,11 @@
 
   body {
     @apply bg-white text-dark;
+    font-family: 'Afacad Flux', system-ui, sans-serif;
+  }
+  
+  * {
+    font-family: inherit;
   }
 
   html {
@@ -34,4 +39,41 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Accessibility utilities */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--taupe);
+  outline-offset: 2px;
+}
+
+/* Ensure sufficient color contrast */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--taupe);
+  outline-offset: 2px;
 }

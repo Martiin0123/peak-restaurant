@@ -1,39 +1,39 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { LanguageProvider } from '@/components/LanguageProvider'
-import { CookieConsent } from '@/components/CookieConsent'
-
-// Using Inter as a premium modern fallback since Afacad Flux may not be available
-// To use Afacad Flux, load it manually via CSS or use a font service
-const inter = Inter({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-afacad',
-  display: 'swap',
-})
+import type { Metadata } from "next";
+import "./globals.css";
+import { LanguageProvider } from "@/components/LanguageProvider";
+import { CookieConsent } from "@/components/CookieConsent";
+import { SkipLink } from "@/components/SkipLink";
 
 export const metadata: Metadata = {
-  title: 'PEAK Restaurant',
-  description: 'Premium dining experience in Vienna',
+  title: "PEAK Restaurant",
+  description: "Premium dining experience in Vienna",
   icons: {
-    icon: '/logo.png',
+    icon: "/logo.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="de" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body
+        className="font-sans antialiased"
+        style={{ fontFamily: "'Afacad Flux', system-ui, sans-serif" }}
+      >
         <LanguageProvider>
-          {children}
+          <SkipLink />
+          <div id="main-content" tabIndex={-1}>
+            {children}
+          </div>
           <CookieConsent />
         </LanguageProvider>
       </body>
     </html>
-  )
+  );
 }

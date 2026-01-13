@@ -1,21 +1,36 @@
+"use client";
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function ImpressumPage() {
+  const { t } = useLanguage();
+
   return (
-    <main className="min-h-screen bg-[#FAFAFA] text-dark">
+    <main
+      className="min-h-screen bg-[#FAFAFA] text-dark"
+      role="main"
+      aria-label={t.legal.imprint.title}
+    >
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 bg-dark text-white">
+      <section
+        className="relative pt-32 pb-16 bg-dark text-white"
+        aria-labelledby="impressum-heading"
+      >
         <div className="absolute inset-0 bg-gradient-to-b from-dark via-dark/95 to-dark" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-              Impressum
+            <h1
+              id="impressum-heading"
+              className="text-5xl md:text-7xl font-bold tracking-tight"
+            >
+              {t.legal.imprint.title}
             </h1>
             <p className="text-white/60 mt-4 text-lg">
-              Rechtliche Informationen
+              {t.legal.imprint.subtitle}
             </p>
           </div>
         </div>
@@ -23,71 +38,76 @@ export default function ImpressumPage() {
 
       <div className="py-20 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <p>Angaben gemäß § 5 TMG</p>
-
-          <h3 className="mt-8 mb-4 font-bold text-xl">Betreiber</h3>
-          <p>
-            Hotel Alpina Betriebs GmbH
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.imprint.responsible}
+          </h2>
+          <p className="mb-2">
+            <strong>{t.legal.imprint.company}</strong>
             <br />
-            Innrain 19
+            {t.legal.imprint.companyFull}
             <br />
-            6020 Innsbruck
+            {t.legal.imprint.address}
             <br />
-            AUSTRIA
+            {t.legal.imprint.city}
+            <br />
+            {t.legal.imprint.country}
+          </p>
+          <p className="mb-8">
+            {t.legal.imprint.phone}
+            <br />
+            {t.legal.imprint.email}
           </p>
 
-          <h3 className="mt-8 mb-4 font-bold text-xl">Kontakt</h3>
-          <p>
-            Telefon: +43 5444 5255
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.imprint.ecg.title}
+          </h2>
+          <p className="mb-2">
+            <strong>{t.legal.imprint.ecg.companyName}</strong>{" "}
+            {t.legal.imprint.ecg.companyValue}
             <br />
-            E-Mail: info@peak-restaurant.at
+            <strong>{t.legal.imprint.ecg.uid}</strong>{" "}
+            {t.legal.imprint.ecg.uidValue}
+            <br />
+            <strong>{t.legal.imprint.ecg.seat}</strong>{" "}
+            {t.legal.imprint.ecg.seatValue}
+            <br />
+            <strong>{t.legal.imprint.ecg.jurisdiction}</strong>{" "}
+            {t.legal.imprint.ecg.jurisdictionValue}
+            <br />
+            <strong>{t.legal.imprint.ecg.legalForm}</strong>{" "}
+            {t.legal.imprint.ecg.legalFormValue}
+            <br />
+            <strong>{t.legal.imprint.ecg.authority}</strong>{" "}
+            {t.legal.imprint.ecg.authorityValue}
+            <br />
+            <strong>{t.legal.imprint.ecg.group}</strong>{" "}
+            {t.legal.imprint.ecg.groupValue}
+            <br />
+            <strong>{t.legal.imprint.ecg.chamber}</strong>{" "}
+            {t.legal.imprint.ecg.chamberValue}
           </p>
 
-          <h3 className="mt-8 mb-4 font-bold text-xl">
-            Vertretungsberechtigte Geschäftsführer
-          </h3>
-          <p>Max Mustermann (Platzhalter)</p>
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.imprint.images.title}
+          </h2>
+          <p className="mb-2">
+            {t.legal.imprint.images.credits.map((credit, i) => (
+              <span key={i}>
+                {credit}
+                {i < t.legal.imprint.images.credits.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+          <p className="mb-8">{t.legal.imprint.images.icons}</p>
 
-          <h3 className="mt-8 mb-4 font-bold text-xl">Registereintrag</h3>
-          <p>
-            Eintragung im Handelsregister.
-            <br />
-            Registergericht: Landesgericht Innsbruck
-            <br />
-            Registernummer: FN 123456 x
-          </p>
-
-          <h3 className="mt-8 mb-4 font-bold text-xl">Umsatzsteuer-ID</h3>
-          <p>
-            Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:
-            <br />
-            ATU12345678
-          </p>
-
-          <h3 className="mt-8 mb-4 font-bold text-xl">
-            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
-          </h3>
-          <p>
-            Max Mustermann
-            <br />
-            Dorfstraße 22
-            <br />
-            6561 Ischgl
-          </p>
-
-          <h3 className="mt-8 mb-4 font-bold text-xl">Streitschlichtung</h3>
-          <p>
-            Die Europäische Kommission stellt eine Plattform zur
-            Online-Streitbeilegung (OS) bereit:
-            https://ec.europa.eu/consumers/odr.
-            <br />
-            Unsere E-Mail-Adresse finden Sie oben im Impressum.
-          </p>
-          <p>
-            Wir sind nicht bereit oder verpflichtet, an
-            Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
-            teilzunehmen.
-          </p>
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.imprint.copyright.title}
+          </h2>
+          <p className="mb-4">{t.legal.imprint.copyright.intro}</p>
+          <p className="mb-4">{t.legal.imprint.copyright.content1}</p>
+          <p className="mb-4">{t.legal.imprint.copyright.content2}</p>
+          <p className="mb-4">{t.legal.imprint.copyright.content3}</p>
+          <p>{t.legal.imprint.copyright.content4}</p>
         </div>
       </div>
       <Footer />

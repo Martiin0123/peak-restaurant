@@ -1,47 +1,54 @@
-'use client'
+"use client";
 
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { Language, translations } from '@/lib/translations'
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { Language, translations } from "@/lib/translations";
 
 type LanguageContextType = {
-  language: Language
-  setLanguage: (lang: Language) => void
-  t: (typeof translations)[Language]
-}
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (typeof translations)[Language];
+};
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('de')
-  const [mounted, setMounted] = useState(false)
+  const [language, setLanguageState] = useState<Language>("de");
+  const [mounted, setMounted] = useState(false);
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-    const saved = localStorage.getItem('language') as Language | null
-    if (saved && (saved === 'de' || saved === 'en')) {
-      setLanguageState(saved)
+    setMounted(true);
+    const saved = localStorage.getItem("language") as Language | null;
+    let initialLang: Language = "de";
+    if (saved && (saved === "de" || saved === "en")) {
+      initialLang = saved;
     } else {
-      const browserLang = navigator.language.split('-')[0]
-      setLanguageState(browserLang === 'en' ? 'en' : 'de')
+      const browserLang = navigator.language.split("-")[0];
+      initialLang = browserLang === "en" ? "en" : "de";
     }
-  }, [])
+    setLanguageState(initialLang);
+    if (typeof window !== "undefined") {
+      document.documentElement.lang = initialLang;
+    }
+  }, []);
 
   const setLanguage = (lang: Language) => {
-    if (lang === language) return
-    
-    setLoading(true)
+    if (lang === language) return;
+
+    setLoading(true);
     // Simulate loading delay for the animation
     setTimeout(() => {
-      setLanguageState(lang)
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('language', lang)
-        document.documentElement.lang = lang
+      setLanguageState(lang);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("language", lang);
+        document.documentElement.lang = lang;
       }
-      setLoading(false)
-    }, 600)
-  }
+      setLoading(false);
+    }, 600);
+  };
 
   // Always provide the context, even during SSR
   // Use default 'de' language until mounted
@@ -54,9 +61,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       }}
     >
       {/* Page Reload Transition Overlay */}
-      <div 
+      <div
         className={`fixed inset-0 z-[100] bg-dark flex items-center justify-center transition-all duration-500 pointer-events-none ${
-          loading ? 'opacity-100' : 'opacity-0'
+          loading ? "opacity-100" : "opacity-0"
         }`}
       >
         {/* Circular Spinner */}
@@ -65,13 +72,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
       {children}
     </LanguageContext.Provider>
-  )
+  );
 }
 
 export function useLanguage() {
-  const context = useContext(LanguageContext)
+  const context = useContext(LanguageContext);
   if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider')
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
-  return context
+  return context;
 }

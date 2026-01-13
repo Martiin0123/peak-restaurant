@@ -45,8 +45,9 @@ export function ReservationCTA() {
           </p>
           
           <a 
-            href="#"
-            onClick={(e) => { e.preventDefault(); alert('Booking modal') }}
+            href="https://app.gastronomiq.at/reservations/48b1ba9b36a7e1142817491a4848883b83ba964f"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group block relative"
           >
             <h2 className="text-[12vw] leading-[0.8] font-bold text-dark tracking-tighter transition-transform duration-500 group-hover:scale-105">

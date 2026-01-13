@@ -1,21 +1,36 @@
+"use client";
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function DatenschutzPage() {
+  const { t } = useLanguage();
+
   return (
-    <main className="min-h-screen bg-[#FAFAFA] text-dark">
+    <main
+      className="min-h-screen bg-[#FAFAFA] text-dark"
+      role="main"
+      aria-label={t.legal.privacy.title}
+    >
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 bg-dark text-white">
+      <section
+        className="relative pt-32 pb-16 bg-dark text-white"
+        aria-labelledby="privacy-heading"
+      >
         <div className="absolute inset-0 bg-gradient-to-b from-dark via-dark/95 to-dark" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-              Datenschutzerklärung
+            <h1
+              id="privacy-heading"
+              className="text-5xl md:text-7xl font-bold tracking-tight"
+            >
+              {t.legal.privacy.title}
             </h1>
             <p className="text-white/60 mt-4 text-lg">
-              Ihre Privatsphäre ist uns wichtig
+              {t.legal.privacy.subtitle}
             </p>
           </div>
         </div>
@@ -23,80 +38,168 @@ export default function DatenschutzPage() {
 
       <div className="py-20 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto prose prose-lg">
-          <h2 className="text-2xl font-bold mt-8 mb-4">
-            1. Datenschutz auf einen Blick
-          </h2>
-          <h3 className="text-xl font-bold mt-4 mb-2">Allgemeine Hinweise</h3>
-          <p>
-            Die folgenden Hinweise geben einen einfachen Überblick darüber, was
-            mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website
-            besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie
-            persönlich identifiziert werden können.
-          </p>
+          <div className="mb-12 pb-8 border-b border-dark/10">
+            <h2 className="text-3xl font-bold mb-4">{t.legal.privacy.title}</h2>
+            <p className="text-xl font-semibold">
+              {t.legal.privacy.responsible.restaurant}
+            </p>
+          </div>
+
+          <p className="mb-8">{t.legal.privacy.intro1}</p>
+          <p className="mb-8">{t.legal.privacy.intro2}</p>
 
           <h2 className="text-2xl font-bold mt-8 mb-4">
-            2. Allgemeine Hinweise und Pflichtinformationen
+            {t.legal.privacy.responsible.title}
           </h2>
-          <h3 className="text-xl font-bold mt-4 mb-2">Datenschutz</h3>
-          <p>
-            Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen
-            Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten
-            vertraulich und entsprechend der gesetzlichen
-            Datenschutzvorschriften sowie dieser Datenschutzerklärung.
-          </p>
-
-          <h3 className="text-xl font-bold mt-4 mb-2">
-            Hinweis zur verantwortlichen Stelle
-          </h3>
-          <p>
-            Die verantwortliche Stelle für die Datenverarbeitung auf dieser
-            Website ist:
+          <p className="mb-8">
+            {t.legal.privacy.responsible.restaurant}
             <br />
-            Hotel Alpina Betriebs GmbH
+            {t.legal.privacy.responsible.address}
             <br />
-            Innrain 19
+            {t.legal.privacy.responsible.city}
             <br />
-            6020 Innsbruck
+            {t.legal.privacy.responsible.country}
             <br />
-            E-Mail: info@peak-restaurant.at
+            <br />
+            {t.legal.privacy.responsible.phone}
+            <br />
+            {t.legal.privacy.responsible.email}
           </p>
 
           <h2 className="text-2xl font-bold mt-8 mb-4">
-            3. Datenerfassung auf unserer Website
+            {t.legal.privacy.contact.title}
           </h2>
-          <h3 className="text-xl font-bold mt-4 mb-2">Cookies</h3>
-          <p>
-            Unsere Internetseiten verwenden so genannte &quot;Cookies&quot;.
-            Cookies sind kleine Textdateien und richten auf Ihrem Endgerät
-            keinen Schaden an. Sie werden entweder vorübergehend für die Dauer
-            einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies)
-            auf Ihrem Endgerät gespeichert.
-          </p>
-          <p>
-            Sie können Ihren Browser so einstellen, dass Sie über das Setzen von
-            Cookies informiert werden und Cookies nur im Einzelfall erlauben,
-            die Annahme von Cookies für bestimmte Fälle oder generell
-            ausschließen sowie das automatische Löschen der Cookies beim
-            Schließen des Browsers aktivieren.
-          </p>
-
-          <h3 className="text-xl font-bold mt-4 mb-2">Kontaktformular</h3>
-          <p>
-            Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden
-            Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort
-            angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den
-            Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir
-            nicht ohne Ihre Einwilligung weiter.
+          <p className="mb-4">{t.legal.privacy.contact.content1}</p>
+          <p className="mb-4">{t.legal.privacy.contact.content2}</p>
+          <p className="mb-8">
+            <strong>{t.legal.privacy.contact.legalBasis}</strong>
           </p>
 
           <h2 className="text-2xl font-bold mt-8 mb-4">
-            4. Analyse-Tools und Werbung
+            {t.legal.privacy.cookies.title}
           </h2>
-          <p>
-            Derzeit verwenden wir keine externen Analyse-Tools wie Google
-            Analytics. Sollte sich dies ändern, werden wir Sie in dieser
-            Datenschutzerklärung darüber informieren und Ihre Einwilligung über
-            unser Cookie-Consent-Tool einholen.
+          <p className="mb-4">{t.legal.privacy.cookies.content1}</p>
+          <p className="mb-4">{t.legal.privacy.cookies.content2}</p>
+          <p className="mb-4">{t.legal.privacy.cookies.content3}</p>
+          <p className="mb-8">
+            <strong>{t.legal.privacy.cookies.legalBasis}</strong>
+          </p>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.privacy.analytics.title}
+          </h2>
+          <p className="mb-4">{t.legal.privacy.analytics.content1}</p>
+          <p className="mb-4">{t.legal.privacy.analytics.content2}</p>
+          <p className="mb-4">{t.legal.privacy.analytics.content3}</p>
+          <p className="mb-4">
+            <strong>{t.legal.privacy.analytics.legalBasis}</strong>
+          </p>
+          <p className="mb-4">
+            {t.legal.privacy.analytics.optOut}
+            <br />
+            <a
+              href={t.legal.privacy.analytics.optOutLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-taupe hover:underline"
+            >
+              {t.legal.privacy.analytics.optOutLink}
+            </a>
+          </p>
+          <p className="mb-8">
+            <strong>{t.legal.privacy.analytics.moreInfo}</strong>
+            <br />
+            <a
+              href={t.legal.privacy.analytics.moreInfoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-taupe hover:underline"
+            >
+              {t.legal.privacy.analytics.moreInfoLink}
+            </a>
+          </p>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.privacy.thirdParty.title}
+          </h2>
+          <p className="mb-4">{t.legal.privacy.thirdParty.content1}</p>
+          <p className="mb-8">{t.legal.privacy.thirdParty.content2}</p>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.privacy.maps.title}
+          </h2>
+          <p className="mb-4">{t.legal.privacy.maps.content1}</p>
+          <p className="mb-8">
+            <strong>{t.legal.privacy.maps.moreInfo}</strong>
+            <br />
+            <a
+              href={t.legal.privacy.maps.moreInfoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-taupe hover:underline"
+            >
+              {t.legal.privacy.maps.moreInfoLink}
+            </a>
+          </p>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.privacy.purpose.title}
+          </h2>
+          <p className="mb-4">{t.legal.privacy.purpose.intro}</p>
+          <ul className="list-disc pl-6 mb-8">
+            {t.legal.privacy.purpose.purposes.map((purpose, i) => (
+              <li key={i}>{purpose}</li>
+            ))}
+          </ul>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.privacy.sharing.title}
+          </h2>
+          <p className="mb-4">{t.legal.privacy.sharing.intro}</p>
+          <ul className="list-disc pl-6 mb-4">
+            {t.legal.privacy.sharing.conditions.map((condition, i) => (
+              <li key={i}>{condition}</li>
+            ))}
+          </ul>
+          <p className="mb-8">{t.legal.privacy.sharing.noMarketing}</p>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.privacy.rights.title}
+          </h2>
+          <p className="mb-4">{t.legal.privacy.rights.intro}</p>
+          <ul className="list-disc pl-6 mb-4">
+            {t.legal.privacy.rights.rightsList.map((right, i) => (
+              <li key={i}>{right}</li>
+            ))}
+          </ul>
+          <p className="mb-8">
+            {t.legal.privacy.rights.complaint}
+            <br />
+            <br />
+            <strong>{t.legal.privacy.rights.authority}</strong>
+            <br />
+            {t.legal.privacy.rights.authorityName}
+          </p>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4">
+            {t.legal.privacy.contactInfo.title}
+          </h2>
+          <p className="mb-8">
+            {t.legal.privacy.contactInfo.intro}
+            <br />
+            <br />
+            <strong>{t.legal.privacy.responsible.restaurant}</strong>
+            <br />
+            {t.legal.privacy.responsible.address}
+            <br />
+            {t.legal.privacy.responsible.city}
+            <br />
+            {t.legal.privacy.responsible.country}
+            <br />
+            <br />
+            {t.legal.privacy.responsible.phone}
+            <br />
+            {t.legal.privacy.responsible.email}
           </p>
         </div>
       </div>

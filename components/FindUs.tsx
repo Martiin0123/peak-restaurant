@@ -55,7 +55,7 @@ export function FindUs() {
             className="bg-dark/80 backdrop-blur-md border border-white/10 p-8 md:p-12 lg:p-16 max-w-2xl shadow-2xl"
           >
             <span className="text-sm font-mono uppercase tracking-widest text-taupe mb-8 block">
-              04 / {t.findUs.title}
+              05 / {t.findUs.title}
             </span>
 
             <div className="space-y-12">
@@ -64,9 +64,12 @@ export function FindUs() {
                 <h3 className="text-white/40 text-sm uppercase tracking-wider mb-4">
                   {t.info.address}
                 </h3>
-                <p className="text-3xl md:text-5xl font-serif text-white leading-tight">
+                <p className="text-3xl md:text-5xl text-white leading-tight">
                   {t.info.addressValue.split(",")[0]}, <br />
                   {t.info.addressValue.split(",")[1]}
+                </p>
+                <p className="text-lg text-white/70 mt-4 leading-relaxed">
+                  im Hotel Alpina Ischgl, im ersten Untergeschoss
                 </p>
                 <a
                   href={googleMapsUrl}

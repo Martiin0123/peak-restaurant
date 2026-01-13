@@ -52,60 +52,68 @@ export function Footer() {
             {/* Sitemap */}
             <div>
               <h4 className="text-white font-medium mb-6">Explore</h4>
-              <ul className="space-y-4 text-white/60">
-                {["Events", "About", "Menus", "Gallery", "Find Us"].map(
-                  (item) => (
-                    <li key={item}>
-                      <a
-                        href={`#${item.toLowerCase().replace(" ", "-")}`}
-                        className="hover:text-white transition-colors"
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  )
-                )}
-              </ul>
+              <nav aria-label="Footer navigation">
+                <ul className="space-y-4 text-white/60">
+                  {["Events", "About", "Menus", "Gallery", "Find Us"].map(
+                    (item) => (
+                      <li key={item}>
+                        <a
+                          href={`#${item.toLowerCase().replace(" ", "-")}`}
+                          className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark rounded px-1"
+                        >
+                          {item}
+                        </a>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </nav>
             </div>
 
             {/* Legal */}
             <div>
               <h4 className="text-white font-medium mb-6">Legal</h4>
-              <ul className="space-y-4 text-white/60">
-                <li>
-                  <a
-                    href="/impressum"
-                    className="hover:text-white transition-colors"
-                  >
-                    {t.footer.links.imprint}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/datenschutz"
-                    className="hover:text-white transition-colors"
-                  >
-                    {t.footer.links.privacy}
-                  </a>
-                </li>
-                <li>
-                  <a href="/agb" className="hover:text-white transition-colors">
-                    {t.footer.links.agb}
-                  </a>
-                </li>
-                <li>
-                  <button
-                    onClick={() =>
-                      window.dispatchEvent(
-                        new CustomEvent("openCookieSettings")
-                      )
-                    }
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t.footer.links.cookieSettings}
-                  </button>
-                </li>
-              </ul>
+              <nav aria-label="Legal links">
+                <ul className="space-y-4 text-white/60">
+                  <li>
+                    <a
+                      href="/impressum"
+                      className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark rounded px-1"
+                    >
+                      {t.footer.links.imprint}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/datenschutz"
+                      className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark rounded px-1"
+                    >
+                      {t.footer.links.privacy}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/agb"
+                      className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark rounded px-1"
+                    >
+                      {t.footer.links.agb}
+                    </a>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() =>
+                        window.dispatchEvent(
+                          new CustomEvent("openCookieSettings")
+                        )
+                      }
+                      className="hover:text-white transition-colors text-left focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark rounded px-1"
+                      aria-label={t.footer.links.cookieSettings}
+                    >
+                      {t.footer.links.cookieSettings}
+                    </button>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
             {/* Social */}

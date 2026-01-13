@@ -1,30 +1,32 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Utensils } from 'lucide-react'
-import { useLanguage } from './LanguageProvider'
+import { motion } from "framer-motion";
+import { Utensils } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
 
 /**
  * Redesigned Menu CTA Section
- * 
+ *
  * DESIGN RATIONALE:
  * - BACKGROUND: Switched to #AA998A (taupe) as the dominant surface to introduce warmth and break the dark mode monotony.
  * - LAYOUT: Asymmetric grid moves away from the generic centered alignment. Typography acts as a visual anchor.
- * - BUTTON: Custom "pill" shape with inverted colors (Dark on Taupe) creates strong contrast. 
+ * - BUTTON: Custom "pill" shape with inverted colors (Dark on Taupe) creates strong contrast.
  *   The magnetic-style hover and inner shadow make it feel tactile and premium.
  * - TYPOGRAPHY: Large scale, tight letter-spacing, and high contrast (Dark text on Light bg) gives an editorial feel.
  */
 export function Menus() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   const handleMenuClick = () => {
-    // TODO: Replace with actual PDF path
-    const pdfPath = '/menu.pdf'
-    window.open(pdfPath, '_blank')
-  }
+    const pdfPath = "/Speisekarte.pdf";
+    window.open(pdfPath, "_blank");
+  };
 
   return (
-    <section id="menus" className="relative py-24 md:py-32 overflow-hidden bg-taupe text-dark">
+    <section
+      id="menus"
+      className="relative py-24 md:py-32 overflow-hidden bg-taupe text-dark"
+    >
       {/* 
         BACKGROUND TREATMENT 
         - Solid taupe base (#AA998A)
@@ -34,18 +36,21 @@ export function Menus() {
       <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <filter id="noiseFilter">
-            <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.6"
+              stitchTiles="stitch"
+            />
           </filter>
           <rect width="100%" height="100%" filter="url(#noiseFilter)" />
         </svg>
       </div>
-      
+
       {/* Large decorative gradient orb for subtle variation */}
       <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-white/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          
           {/* 
             TYPOGRAPHY COLUMN (Left-aligned, span 7)
             - Uses negative space and scale
@@ -58,14 +63,16 @@ export function Menus() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Decorative label */}
-              <span className="block text-dark/60 text-sm font-medium tracking-widest uppercase mb-6 pl-1 border-l-2 border-dark/30">
-                {t.menus.title}
+              <span className="block text-dark/60 text-sm font-mono uppercase tracking-widest mb-6 pl-1 border-l-2 border-dark/30">
+                03 / {t.menus.title}
               </span>
 
               {/* Headline - Big, Bold, Editorial */}
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight mb-8 text-dark">
-                {t.menus.headline.split(' ').map((word, i) => (
-                  <span key={i} className="block">{word}</span>
+                {t.menus.headline.split(" ").map((word, i) => (
+                  <span key={i} className="block">
+                    {word}
+                  </span>
                 ))}
               </h2>
 
@@ -85,7 +92,11 @@ export function Menus() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               {/* 
                 BUTTON REDESIGN
@@ -111,7 +122,7 @@ export function Menus() {
                 {/* Icon Circle */}
                 <div className="relative w-12 h-12 bg-white/10 rounded-full flex items-center justify-center overflow-hidden group-hover:bg-white/20 transition-colors">
                   <Utensils size={20} className="text-white relative z-10" />
-                  
+
                   {/* Ripple effect on hover */}
                   <div className="absolute inset-0 bg-taupe/20 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500 ease-out" />
                 </div>
@@ -121,5 +132,5 @@ export function Menus() {
         </div>
       </div>
     </section>
-  )
+  );
 }

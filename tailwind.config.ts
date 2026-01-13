@@ -13,7 +13,7 @@ const config: Config = {
         dark: '#202020',
       },
       fontFamily: {
-        sans: ['"Afacad Flux"', 'var(--font-afacad)', 'system-ui', 'sans-serif'],
+        sans: ['Afacad Flux', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         loading: {

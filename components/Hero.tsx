@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, MapPin, Clock } from "lucide-react";
+import { ArrowDown, MapPin, Clock, Utensils } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 
 /**
@@ -28,6 +28,7 @@ export function Hero() {
     <section
       id="hero"
       className="relative h-screen w-full overflow-hidden bg-dark flex flex-col justify-between pt-32 pb-12"
+      aria-labelledby="hero-headline"
     >
       {/* 1. BACKGROUND LAYERS */}
       <div className="absolute inset-0 z-0">
@@ -68,39 +69,42 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-[15vw] lg:text-[12rem] font-bold text-white leading-[0.8] tracking-tighter mix-blend-difference select-none">
-              PEAK
+            <h1
+              id="hero-headline"
+              className="text-[15vw] lg:text-[12rem] font-bold text-white leading-[0.8] tracking-tighter mix-blend-difference select-none"
+            >
+              {t.hero.headline}
             </h1>
             <div className="h-2 w-32 bg-taupe mt-4 hidden lg:block" />
           </motion.div>
 
           {/* Editorial Info Column - Offset to right */}
           <motion.div
-            className="lg:col-span-4 flex flex-col items-start lg:items-end text-left lg:text-right space-y-8"
+            className="lg:col-span-4 flex flex-col items-start lg:items-end text-left lg:text-right space-y-8 drop-shadow-lg"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Subline */}
-            <p className="text-xl md:text-2xl text-white/90 font-light max-w-xs leading-relaxed">
+            <p className="text-xl md:text-2xl text-white font-light max-w-xs leading-relaxed">
               {t.hero.subline}
-              <span className="block text-taupe mt-2 font-medium">
+              <span className="inline-block mt-3 px-4 py-1.5 bg-taupe/10 border border-taupe/30 rounded-full text-taupe text-sm font-medium backdrop-blur-sm">
                 Est. 2021
               </span>
             </p>
 
             {/* Concise Info - Replaces "Chips" */}
-            <div className="space-y-4 text-white/60 text-sm font-mono uppercase tracking-wider">
+            <div className="space-y-4 text-white text-sm uppercase tracking-wider">
               <div className="flex items-center gap-3 lg:flex-row-reverse">
                 <Clock size={16} className="text-taupe" />
                 <span>{t.info.hoursValue}</span>
               </div>
               <div className="flex items-center gap-3 lg:flex-row-reverse">
-                <span className="w-4 h-4" /> {/* Spacer to align with icons */}
-                <span className="text-taupe">
+                <Utensils size={16} className="text-taupe" />
+                <span className="text-white">
                   {language === "de"
-                    ? "Jeden DO: Fondue Abend"
-                    : "Every THU: Fondue Night"}
+                    ? "Jeden Donnerstag: Fondue Abend"
+                    : "Every Thursday: Fondue Night"}
                 </span>
               </div>
               <div className="flex items-center gap-3 lg:flex-row-reverse">
@@ -111,11 +115,17 @@ export function Hero() {
 
             {/* Primary CTA */}
             <a
-              href="#reservation"
-              className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white text-dark font-bold tracking-wide transition-transform hover:scale-105"
+              href="https://app.gastronomiq.at/reservations/48b1ba9b36a7e1142817491a4848883b83ba964f"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white text-dark font-bold tracking-wide transition-all duration-300 hover:scale-105 hover:bg-taupe hover:text-white hover:shadow-[0_0_20px_rgba(193,168,125,0.4)] focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark"
+              aria-label={t.cta.reserve + " - Opens in new window"}
             >
               <span>{t.cta.reserve}</span>
-              <div className="w-2 h-2 bg-taupe rounded-full" />
+              <div
+                className="w-2 h-2 bg-taupe rounded-full group-hover:bg-white transition-colors duration-300"
+                aria-hidden="true"
+              />
             </a>
           </motion.div>
         </div>

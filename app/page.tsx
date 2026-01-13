@@ -10,11 +10,11 @@ import { Footer } from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" role="main" aria-label="PEAK Restaurant main content">
       <Header />
       <Hero />
-      <Events />
       <About />
+      <Events />
       <Menus />
       <Gallery />
       <FindUs />

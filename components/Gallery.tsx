@@ -111,7 +111,7 @@ export function Gallery() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-12 flex items-end justify-between">
         <div>
           <span className="text-sm font-mono uppercase tracking-widest text-taupe mb-4 block">
-            03 / {t.gallery.title}
+            04 / {t.gallery.title}
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-white">Moments</h2>
         </div>
