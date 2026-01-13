@@ -51,8 +51,9 @@ export function Hero() {
           }}
         />
 
-        {/* Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/30 via-transparent to-dark/90" />
+        {/* Vignette & Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/90" />
       </div>
 
       {/* 2. MAIN CONTENT - Asymmetric Grid */}
@@ -85,31 +86,38 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Subline */}
-            <p className="text-xl md:text-2xl text-white font-light max-w-xs leading-relaxed">
-              {t.hero.subline}
-              <span className="inline-block mt-3 px-4 py-1.5 bg-taupe/10 border border-taupe/30 rounded-full text-taupe text-sm font-medium backdrop-blur-sm">
-                Est. 2021
-              </span>
-            </p>
+            {/* Subline and Info Container */}
+            <div className="relative">
+              <div className="relative z-10 sm:static">
+                {/* Subline */}
+                <p className="text-xl md:text-2xl text-white font-light max-w-xs leading-relaxed mb-6 sm:mb-4">
+                  {t.hero.subline}
+                  <span className="inline-flex items-center ml-3 px-3 py-1 bg-white/10 border border-white/20 rounded-full text-white/90 text-xs font-medium tracking-wide backdrop-blur-sm align-middle">
+                    {t.hero.established}
+                  </span>
+                </p>
 
-            {/* Concise Info - Replaces "Chips" */}
-            <div className="space-y-4 text-white text-sm uppercase tracking-wider">
-              <div className="flex items-center gap-3 lg:flex-row-reverse">
-                <Clock size={16} className="text-taupe" />
-                <span>{t.info.hoursValue}</span>
-              </div>
-              <div className="flex items-center gap-3 lg:flex-row-reverse">
-                <Utensils size={16} className="text-taupe" />
-                <span className="text-white">
-                  {language === "de"
-                    ? "Jeden Donnerstag: Fondue Abend"
-                    : "Every Thursday: Fondue Night"}
-                </span>
-              </div>
-              <div className="flex items-center gap-3 lg:flex-row-reverse">
-                <MapPin size={16} className="text-taupe" />
-                <span>{t.info.addressValue}</span>
+                {/* Concise Info */}
+                <div className="space-y-4 text-white text-sm uppercase tracking-wider mt-6 sm:mt-0">
+                  <div className="flex items-center gap-3 lg:flex-row-reverse">
+                    <Clock size={16} className="text-taupe shrink-0" />
+                    <span className="text-white/90 sm:text-white sm:text-shadow-none">
+                      {t.info.hoursValue}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 lg:flex-row-reverse">
+                    <Utensils size={16} className="text-taupe shrink-0" />
+                    <span className="text-white/90 sm:text-white sm:text-shadow-none">
+                      {t.info.fondueNight}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 lg:flex-row-reverse">
+                    <MapPin size={16} className="text-taupe shrink-0" />
+                    <span className="text-white/90 sm:text-white sm:text-shadow-none">
+                      {t.info.addressValue}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -119,7 +127,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white text-dark font-bold tracking-wide transition-all duration-300 hover:scale-105 hover:bg-taupe hover:text-white hover:shadow-[0_0_20px_rgba(193,168,125,0.4)] focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark"
-              aria-label={t.cta.reserve + " - Opens in new window"}
+              aria-label={t.cta.reserve + t.cta.opensInNewWindow}
             >
               <span>{t.cta.reserve}</span>
               <div
@@ -131,16 +139,33 @@ export function Hero() {
         </div>
       </div>
 
-      {/* 3. SCROLL INDICATOR - Anchored bottom left */}
+      {/* 3. SCROLL INDICATOR */}
+      {/* Mobile: Centered swipe indicator */}
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-8 left-4 sm:left-8 z-20 flex items-center gap-4"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 sm:hidden"
+      >
+        <span className="text-white/60 text-xs uppercase tracking-wider">
+          {t.hero.scroll}
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ArrowDown size={24} className="text-white/60" />
+        </motion.div>
+      </motion.div>
+
+      {/* Desktop: Left-aligned vertical indicator */}
+      <motion.div
+        style={{ opacity }}
+        className="hidden sm:flex absolute bottom-8 left-8 z-20 items-center gap-4"
       >
         <span
           className="text-white/40 text-xs uppercase tracking-[0.2em] rotate-180 py-2"
           style={{ writingMode: "vertical-rl" }}
         >
-          Scroll
+          {t.hero.scroll}
         </span>
         <div className="h-16 w-[1px] bg-gradient-to-b from-white/0 via-white/40 to-white/0" />
       </motion.div>

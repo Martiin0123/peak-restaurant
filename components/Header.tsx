@@ -34,18 +34,38 @@ export function Header() {
   });
 
   const navItems = [
-    { key: "events", label: t.nav.events, href: "#events" },
-    { key: "about", label: t.nav.about, href: "#about" },
-    { key: "menus", label: t.nav.menus, href: "#menus" },
-    { key: "gallery", label: t.nav.gallery, href: "#gallery" },
-    { key: "findUs", label: t.nav.findUs, href: "#find-us" },
+    { key: "events", label: t.nav.events, href: "#events", path: "/#events" },
+    { key: "about", label: t.nav.about, href: "#about", path: "/#about" },
+    { key: "menus", label: t.nav.menus, href: "#menus", path: "/#menus" },
+    {
+      key: "gallery",
+      label: t.nav.gallery,
+      href: "#gallery",
+      path: "/#gallery",
+    },
+    { key: "findUs", label: t.nav.findUs, href: "#find-us", path: "/#find-us" },
   ];
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // Check if we're on the home page
+    const isHomePage =
+      window.location.pathname === "/" || window.location.pathname === "";
+
+    if (!isHomePage) {
+      // Navigate to home page first, then scroll after a short delay
+      window.location.href = "/";
+      // Store the target href to scroll to after navigation
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("scrollTo", href);
+      }
+    } else {
+      // We're already on home page, just scroll
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
   };
 
@@ -66,7 +86,7 @@ export function Header() {
           >
             {/* Logo */}
             <a
-              href="#hero"
+              href="/"
               onClick={(e) => {
                 e.preventDefault();
                 handleNavClick("#hero");
@@ -92,7 +112,7 @@ export function Header() {
               {navItems.map((item) => (
                 <a
                   key={item.key}
-                  href={item.href}
+                  href={item.path}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavClick(item.href);
@@ -181,7 +201,7 @@ export function Header() {
               {navItems.map((item, i) => (
                 <motion.a
                   key={item.key}
-                  href={item.href}
+                  href={item.path}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavClick(item.href);
@@ -195,6 +215,23 @@ export function Header() {
                   {item.label}
                 </motion.a>
               ))}
+
+              {/* Mobile Reservation Button */}
+              <motion.a
+                href="https://app.gastronomiq.at/reservations/48b1ba9b36a7e1142817491a4848883b83ba964f"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.1 + navItems.length * 0.1,
+                  duration: 0.5,
+                }}
+                className="mt-4 flex items-center gap-2 bg-taupe text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:scale-105 hover:bg-white hover:text-dark hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark"
+                aria-label={t.cta.reserve + " - Opens in new window"}
+              >
+                <span>{t.cta.reserve}</span>
+              </motion.a>
             </nav>
 
             <motion.div

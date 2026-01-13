@@ -16,11 +16,14 @@ export const translations = {
       learnMore: 'Mehr erfahren',
       downloadPdf: 'PDF herunterladen',
       getDirections: 'Route planen',
+      opensInNewWindow: ' - Öffnet in neuem Fenster',
     },
     hero: {
       headline: 'PEAK',
-      subline: '',
+      subline: 'Ein Gipfel des Genusses',
       description: 'Ein Ort, an dem Geschmack, Atmosphäre und Gastfreundschaft aufeinandertreffen.',
+      established: 'Seit 2021',
+      scroll: 'Scrollen',
     },
     info: {
       hours: 'Geöffnet von',
@@ -29,6 +32,7 @@ export const translations = {
       hoursValue: 'Montag - Sonntag: 18:00 - 21:00 Uhr',
       addressValue: 'Dorfstraße 22, 6561 Ischgl',
       phoneValue: '+43 5444 5255',
+      fondueNight: 'Jeden Donnerstag: Fondue Abend',
     },
     events: {
       title: 'Events',
@@ -416,11 +420,14 @@ export const translations = {
       learnMore: 'Learn More',
       downloadPdf: 'Download PDF',
       getDirections: 'Get Directions',
+      opensInNewWindow: ' - Opens in new window',
     },
     hero: {
       headline: 'PEAK',
       subline: 'A Summit of Taste',
       description: 'A place where taste, atmosphere, and hospitality converge.',
+      established: 'Est. 2021',
+      scroll: 'Scroll',
     },
     info: {
       hours: 'Open from',
@@ -429,6 +436,7 @@ export const translations = {
       hoursValue: 'Monday - Sunday: 6:00 PM - 8:30 PM',
       addressValue: 'Dorfstraße 22, 6561 Ischgl',
       phoneValue: '+43 5444 5255',
+      fondueNight: 'Every Thursday: Fondue Night',
     },
     events: {
       title: 'Events',
