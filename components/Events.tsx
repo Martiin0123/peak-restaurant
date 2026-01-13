@@ -37,7 +37,7 @@ export function Events() {
             aria-labelledby="fondue-title"
           >
             <a
-              href="/Fondue.png"
+              href="/Fondue.jpg"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute inset-0 z-20 focus:outline-none focus:ring-2 focus:ring-taupe focus:ring-offset-2 focus:ring-offset-dark"

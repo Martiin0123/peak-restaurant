@@ -37,7 +37,7 @@ export function Hero() {
         <div className="absolute inset-0">
           <div className="relative w-full h-full scale-110 transition-transform duration-[20s] ease-linear">
             <Image
-              src="/Gallery1.jpeg"
+              src="/Gallery1.jpg"
               alt="Peak Restaurant Ambience"
               fill
               priority
