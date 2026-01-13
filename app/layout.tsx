@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CookieConsent } from "@/components/CookieConsent";
@@ -30,6 +31,7 @@ export default function RootLayout({
           <SkipLink />
           <div id="main-content" tabIndex={-1}>
             {children}
+            <SpeedInsights />
           </div>
           <CookieConsent />
         </LanguageProvider>
