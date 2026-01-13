@@ -33,7 +33,7 @@ export function Hero() {
     >
       {/* 1. BACKGROUND LAYERS */}
       <div className="absolute inset-0 z-0">
-        {/* Background Image - Optimized */}
+        {/* Background Image - Optimized for LCP */}
         <div className="absolute inset-0">
           <div className="relative w-full h-full scale-110 transition-transform duration-[20s] ease-linear">
             <Image
@@ -41,9 +41,10 @@ export function Hero() {
               alt="Peak Restaurant Ambience"
               fill
               priority
+              fetchPriority="high"
               className="object-cover object-center"
               sizes="100vw"
-              quality={90}
+              quality={75}
             />
           </div>
         </div>
@@ -76,7 +77,7 @@ export function Hero() {
             className="lg:col-span-8"
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <h1
               id="hero-headline"
@@ -92,7 +93,7 @@ export function Hero() {
             className="lg:col-span-4 flex flex-col items-start lg:items-end text-left lg:text-right space-y-8 drop-shadow-lg"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Subline and Info Container */}
             <div className="relative">

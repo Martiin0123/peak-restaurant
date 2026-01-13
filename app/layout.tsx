@@ -32,6 +32,13 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap"
           rel="stylesheet"
         />
+        {/* Preload critical hero image for LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/Gallery1.jpg"
+          fetchPriority="high"
+        />
       </head>
       <body
         className="font-sans antialiased"
