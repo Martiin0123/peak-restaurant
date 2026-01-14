@@ -28,26 +28,14 @@ export function Menus() {
       className="relative py-24 md:py-32 overflow-hidden bg-taupe text-dark"
     >
       {/* 
-        BACKGROUND TREATMENT 
+        BACKGROUND TREATMENT - Optimized for mobile performance
         - Solid taupe base (#AA998A)
-        - Subtle noise texture for an "editorial paper" feel 
-        - Soft gradient overlay to add depth without muddiness
+        - Simple gradient overlay instead of heavy SVG filters
       */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <filter id="noiseFilter">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.6"
-              stitchTiles="stitch"
-            />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#noiseFilter)" />
-        </svg>
-      </div>
+      <div className="absolute inset-0 opacity-10 pointer-events-none bg-gradient-to-br from-dark/5 via-transparent to-white/5" />
 
       {/* Large decorative gradient orb for subtle variation */}
-      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-white/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-white/10 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MapPin, Clock, Utensils } from "lucide-react";
 import Image from "next/image";
@@ -25,14 +25,27 @@ export function Hero() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    // Check if mobile on mount
+    const checkMobile = () => window.innerWidth < 768;
+    setIsMobile(checkMobile());
+
+    // Debounced resize handler for better performance
+    let timeoutId: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsMobile(checkMobile());
+      }, 150);
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
@@ -45,32 +58,22 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         {/* Background Image - Optimized for LCP */}
         <div className="absolute inset-0">
-          <div className="relative w-full h-full scale-110 transition-transform duration-[20s] ease-linear">
-            <Image
-              src="/Gallery1.jpg"
-              alt="Peak Restaurant Ambience"
-              fill
-              priority
-              fetchPriority="high"
-              className="object-cover object-center"
-              sizes="(max-width: 768px) 100vw, 100vw"
-              quality={isMobile ? 65 : 75}
-            />
-          </div>
+          <Image
+            src="/Gallery1.jpg"
+            alt="Peak Restaurant Ambience"
+            fill
+            priority
+            fetchPriority="high"
+            className="object-cover object-center"
+            sizes="100vw"
+            quality={isMobile ? 50 : 65}
+            loading="eager"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+          />
         </div>
 
-        {/* Dynamic Gradient Orb */}
-        <div className="absolute top-[-10%] left-[-10%] w-[80vw] h-[80vw] bg-taupe/5 rounded-full blur-[120px] animate-pulse-slow" />
-
-        {/* Grain Overlay for texture */}
-        <div
-          className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
-
-        {/* Vignette & Overlay */}
+        {/* Simplified gradient overlay - removed heavy blur effects for mobile performance */}
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/90" />
       </div>
