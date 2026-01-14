@@ -4,7 +4,6 @@ import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
-import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: "PEAK Restaurant",
@@ -23,6 +22,14 @@ export default function RootLayout({
     <html lang="de" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Preload critical hero image for LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/Gallery1.jpg"
+          fetchPriority="high"
+        />
+        {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -33,12 +40,20 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap"
           rel="stylesheet"
         />
-        {/* Preload critical hero image for LCP */}
-        <link
-          rel="preload"
-          as="image"
-          href="/Gallery1.jpg"
-          fetchPriority="high"
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-GF4R3J0LHP"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-GF4R3J0LHP');
+            `,
+          }}
         />
       </head>
       <body
@@ -46,7 +61,6 @@ export default function RootLayout({
         style={{ fontFamily: "'Afacad Flux', system-ui, sans-serif" }}
       >
         <LanguageProvider>
-          <GoogleAnalytics />
           <SkipLink />
           <div id="main-content" tabIndex={-1}>
             {children}
