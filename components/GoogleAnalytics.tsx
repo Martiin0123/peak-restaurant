@@ -1,84 +1,88 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import Script from 'next/script'
+import { useEffect, useState } from "react";
+import Script from "next/script";
 
-// Replace with your actual Google Analytics Measurement ID
-// Get this from: https://analytics.google.com/
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX'
+// Google Analytics Measurement ID
+// Get this from: https://analytics.google.com/ → Admin → Data Streams
+// Format: G-XXXXXXXXXX
+// Note: This is not sensitive data - it's public in the client code
+const GA_MEASUREMENT_ID = "G-GF4R3J0LHP"; // TODO: Replace with your actual GA4 Measurement ID
 
 function hasAnalyticsConsent(): boolean {
-  if (typeof window === 'undefined') return false
-  const consent = localStorage.getItem('cookieConsent')
+  if (typeof window === "undefined") return false;
+  const consent = localStorage.getItem("cookieConsent");
   if (consent) {
     try {
-      const preferences = JSON.parse(consent)
-      return preferences.analytics === true
+      const preferences = JSON.parse(consent);
+      return preferences.analytics === true;
     } catch {
-      return false
+      return false;
     }
   }
-  return false
+  return false;
 }
 
 export function GoogleAnalytics() {
-  const [hasConsent, setHasConsent] = useState(false)
+  const [hasConsent, setHasConsent] = useState(false);
 
   useEffect(() => {
     // Check initial consent
-    setHasConsent(hasAnalyticsConsent())
+    setHasConsent(hasAnalyticsConsent());
 
     // Initialize dataLayer
-    if (typeof window !== 'undefined') {
-      window.dataLayer = window.dataLayer || []
-      
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || [];
+
       // Initialize gtag function
-      window.gtag = window.gtag || function() {
-        window.dataLayer.push(arguments)
-      }
+      window.gtag =
+        window.gtag ||
+        function () {
+          window.dataLayer.push(arguments);
+        };
     }
 
     // Listen for consent changes
     const handleConsentChange = () => {
-      const consent = hasAnalyticsConsent()
-      setHasConsent(consent)
-      
-      if (typeof window.gtag === 'function') {
+      const consent = hasAnalyticsConsent();
+      setHasConsent(consent);
+
+      if (typeof window.gtag === "function") {
         if (consent) {
-          window.gtag('consent', 'update', {
-            analytics_storage: 'granted',
-          })
-          window.gtag('config', GA_MEASUREMENT_ID, {
+          window.gtag("consent", "update", {
+            analytics_storage: "granted",
+          });
+          window.gtag("config", GA_MEASUREMENT_ID, {
             anonymize_ip: true,
             page_path: window.location.pathname,
-          })
+          });
         } else {
-          window.gtag('consent', 'update', {
-            analytics_storage: 'denied',
-          })
+          window.gtag("consent", "update", {
+            analytics_storage: "denied",
+          });
         }
       }
-    }
+    };
 
-    window.addEventListener('cookieConsentChanged', handleConsentChange)
-    
+    window.addEventListener("cookieConsentChanged", handleConsentChange);
+
     // Also check periodically in case localStorage was changed directly
     const interval = setInterval(() => {
-      const currentConsent = hasAnalyticsConsent()
+      const currentConsent = hasAnalyticsConsent();
       if (currentConsent !== hasConsent) {
-        handleConsentChange()
+        handleConsentChange();
       }
-    }, 1000)
+    }, 1000);
 
     return () => {
-      window.removeEventListener('cookieConsentChanged', handleConsentChange)
-      clearInterval(interval)
-    }
-  }, [hasConsent])
+      window.removeEventListener("cookieConsentChanged", handleConsentChange);
+      clearInterval(interval);
+    };
+  }, [hasConsent]);
 
-  // Only load scripts if consent is given
-  if (!hasConsent || !GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
-    return null
+  // Only load scripts if consent is given and Measurement ID is set
+  if (!hasConsent || !GA_MEASUREMENT_ID) {
+    return null;
   }
 
   return (
@@ -107,5 +111,5 @@ export function GoogleAnalytics() {
         }}
       />
     </>
-  )
+  );
 }
