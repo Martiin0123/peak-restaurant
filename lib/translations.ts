@@ -29,7 +29,7 @@ export const translations = {
       hours: 'Geöffnet von',
       address: 'Adresse',
       phone: 'Telefon',
-      hoursValue: 'Montag - Sonntag: 18:00 - 21:00 Uhr',
+      hoursValue: 'Montag - Sonntag: 18:00 - 21:00 Uhr (Warme Küche)',
       addressValue: 'Dorfstraße 22, 6561 Ischgl',
       phoneValue: '+43 5444 5255',
       fondueNight: 'Jeden Donnerstag: Fondue Abend',
@@ -44,6 +44,11 @@ export const translations = {
         title: 'Genuss auf einem neuen Niveau',
         content:
           'Modern. Fein. Unvergesslich. Im PEAK Restaurant verbinden wir kulinarische Perfektion mit herzlicher Gastfreundschaft. Unsere Philosophie basiert auf der Liebe zum Detail und der Leidenschaft für außergewöhnliche Geschmackserlebnisse.',
+      },
+      family: {
+        title: 'Drei Generationen Gastfreundschaft',
+        description:
+          'Familie Zangerl führt das Restaurant mit Leidenschaft und Herzblut. Hermann, Martin und Christopher arbeiten Hand in Hand, um jedem Gast ein unvergessliches kulinarisches Erlebnis zu bieten. Tradition trifft auf Innovation – das ist unser Erfolgsrezept.',
       },
       features: {
         modern: {
@@ -433,7 +438,7 @@ export const translations = {
       hours: 'Open from',
       address: 'Address',
       phone: 'Phone',
-      hoursValue: 'Monday - Sunday: 6:00 PM - 8:30 PM',
+      hoursValue: 'Monday - Sunday: 6:00 PM - 9:00 PM (Kitchen)',
       addressValue: 'Dorfstraße 22, 6561 Ischgl',
       phoneValue: '+43 5444 5255',
       fondueNight: 'Every Thursday: Fondue Night',
@@ -448,6 +453,11 @@ export const translations = {
         title: 'Taste at a New Level',
         content:
           'Modern. Fine. Unforgettable. At PEAK Restaurant, we combine culinary perfection with warm hospitality. Our philosophy is based on attention to detail and a passion for exceptional taste experiences.',
+      },
+      family: {
+        title: 'Three Generations of Hospitality',
+        description:
+          'The Zangerl family runs the restaurant with passion and dedication. Hermann, Martin and Christopher work hand in hand to offer every guest an unforgettable culinary experience. Tradition meets innovation – that is our recipe for success.',
       },
       features: {
         modern: {

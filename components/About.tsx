@@ -2,22 +2,62 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { useLanguage } from "./LanguageProvider";
 
 /**
  * Redesigned About Section
  */
 export function About() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
-  // Dynamic feature keys based on the updated translations
-  const featureKeys = [
-    "modern",
-    "wine",
-    "local",
-    "service",
-    "ambiance",
-  ] as const;
+  // Core features that define PEAK Restaurant
+  const features =
+    language === "de"
+      ? [
+          {
+            title: "Green Egg Holzkohlegrill",
+            description:
+              "Exzellente Steaks vom legendären Keramikgrill - perfekte Röstaromen und zartes Fleisch",
+          },
+          {
+            title: "Beeindruckender Weinkeller",
+            description:
+              "Erlesene Weinauswahl aus unserem spektakulären Keller - perfekt kuratiert für jedes Gericht",
+          },
+          {
+            title: "Frische Produkte",
+            description:
+              "Tägliche Auswahl bester regionaler und saisonaler Zutaten - Qualität, die man schmeckt",
+          },
+          {
+            title: "Familiengeführt",
+            description:
+              "Mit Herz und Leidenschaft - persönlicher Service und familiäre Atmosphäre",
+          },
+        ]
+      : [
+          {
+            title: "Green Egg Charcoal Grill",
+            description:
+              "Excellent steaks from our legendary ceramic grill - perfect roasted flavors and tender meat",
+          },
+          {
+            title: "Stunning Wine Cellar",
+            description:
+              "Exquisite wine selection from our spectacular cellar - perfectly curated for every dish",
+          },
+          {
+            title: "Fresh Products",
+            description:
+              "Daily selection of the finest regional and seasonal ingredients - quality you can taste",
+          },
+          {
+            title: "Family-Run",
+            description:
+              "With heart and passion - personal service and family atmosphere",
+          },
+        ];
 
   return (
     <section id="about" className="relative py-32 bg-[#1A1A1A] overflow-hidden">
@@ -60,14 +100,15 @@ export function About() {
 
               {/* Integrated Pull Quote */}
               <div className="border-l-2 border-taupe pl-6 py-2 my-8">
-                {/* <p className="text-2xl text-white italic font-serif leading-snug mb-4">
-                  "{t.about.chefQuote.text}"
+                <p className="text-2xl text-white italic leading-snug mb-4">
+                  {language === "de"
+                    ? "Exzellenz beginnt mit Leidenschaft und den besten Produkten."
+                    : "Excellence begins with passion and the finest products."}
                 </p>
-                <cite className="text-sm text-taupe uppercase tracking-widest not-italic">
-                  — {t.about.chefQuote.author}
-                </cite> */}
                 <p className="text-lg text-white/60 font-light">
-                  Modern. Fein. Unvergesslich.
+                  {language === "de"
+                    ? "Familiengeführt. Authentisch. Unvergesslich."
+                    : "Family-Run. Authentic. Unforgettable."}
                 </p>
               </div>
             </motion.div>
@@ -75,16 +116,44 @@ export function About() {
 
           {/* RIGHT: Visuals & Features List */}
           <div className="lg:col-span-6 relative">
+            {/* Family Photo - Redesigned */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative mb-12 overflow-hidden rounded-lg bg-dark/30"
+            >
+              <div className="relative aspect-[3/4] w-full">
+                <Image
+                  src="/Familie-Peak.avif"
+                  alt={
+                    language === "de"
+                      ? "Familie Zangerl - Drei Generationen Gastfreundschaft"
+                      : "Zangerl Family - Three Generations of Hospitality"
+                  }
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  quality={90}
+                />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark via-dark/80 to-transparent p-8">
+                <h4 className="text-xl font-semibold text-white mb-3">
+                  {t.about.family.title}
+                </h4>
+                <p className="text-sm text-white/90 leading-relaxed">
+                  {t.about.family.description}
+                </p>
+              </div>
+            </motion.div>
+
             {/* Features List - Minimalist */}
             <div className="space-y-6">
-              {featureKeys.map((key, i) => {
-                // @ts-ignore - we know these keys exist in our updated types
-                const feature = t.about.features[key];
-                if (!feature) return null;
-
+              {features.map((feature, i) => {
                 return (
                   <motion.div
-                    key={key}
+                    key={feature.title}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}

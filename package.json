@@ -11,6 +11,7 @@
     "lighthouse": "next build && next start & sleep 5 && lighthouse http://localhost:3000 --view"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "@vercel/speed-insights": "^1.3.1",
     "framer-motion": "^11.3.0",
     "lucide-react": "^0.344.0",
