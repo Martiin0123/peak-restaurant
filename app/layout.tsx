@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CookieConsent } from "@/components/CookieConsent";
 import { SkipLink } from "@/components/SkipLink";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: "PEAK Restaurant",
@@ -45,6 +46,7 @@ export default function RootLayout({
         style={{ fontFamily: "'Afacad Flux', system-ui, sans-serif" }}
       >
         <LanguageProvider>
+          <GoogleAnalytics />
           <SkipLink />
           <div id="main-content" tabIndex={-1}>
             {children}

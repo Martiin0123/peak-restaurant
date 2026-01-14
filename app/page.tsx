@@ -1,15 +1,32 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
+import dynamic from 'next/dynamic'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
-import { Events } from '@/components/Events'
-import { About } from '@/components/About'
-import { Menus } from '@/components/Menus'
-import { Gallery } from '@/components/Gallery'
-import { FindUs } from '@/components/FindUs'
-import { ReservationCTA } from '@/components/ReservationCTA'
-import { Footer } from '@/components/Footer'
+
+// Lazy load below-the-fold components to improve initial load
+const About = dynamic(() => import('@/components/About').then(mod => ({ default: mod.About })), {
+  ssr: true,
+})
+const Events = dynamic(() => import('@/components/Events').then(mod => ({ default: mod.Events })), {
+  ssr: true,
+})
+const Menus = dynamic(() => import('@/components/Menus').then(mod => ({ default: mod.Menus })), {
+  ssr: true,
+})
+const Gallery = dynamic(() => import('@/components/Gallery').then(mod => ({ default: mod.Gallery })), {
+  ssr: false, // Gallery has heavy animations, defer on mobile
+})
+const FindUs = dynamic(() => import('@/components/FindUs').then(mod => ({ default: mod.FindUs })), {
+  ssr: true,
+})
+const ReservationCTA = dynamic(() => import('@/components/ReservationCTA').then(mod => ({ default: mod.ReservationCTA })), {
+  ssr: true,
+})
+const Footer = dynamic(() => import('@/components/Footer').then(mod => ({ default: mod.Footer })), {
+  ssr: true,
+})
 
 export default function Home() {
   useEffect(() => {
@@ -18,12 +35,18 @@ export default function Home() {
     if (scrollTo) {
       sessionStorage.removeItem('scrollTo');
       // Wait for page to fully load, then scroll
-      setTimeout(() => {
+      const scrollFn = () => {
         const element = document.querySelector(scrollTo);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 100);
+      };
+      
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(scrollFn, { timeout: 1000 });
+      } else {
+        setTimeout(scrollFn, 100);
+      }
     }
   }, []);
 
@@ -31,13 +54,15 @@ export default function Home() {
     <main className="min-h-screen" role="main" aria-label="PEAK Restaurant main content">
       <Header />
       <Hero />
-      <About />
-      <Events />
-      <Menus />
-      <Gallery />
-      <FindUs />
-      <ReservationCTA />
-      <Footer />
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <About />
+        <Events />
+        <Menus />
+        <Gallery />
+        <FindUs />
+        <ReservationCTA />
+        <Footer />
+      </Suspense>
     </main>
   )
 }

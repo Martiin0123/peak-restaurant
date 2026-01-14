@@ -47,6 +47,8 @@ export function CookieConsent() {
     setPreferences(prefs)
     setShowBanner(false)
     setShowSettings(false)
+    // Dispatch event to notify Google Analytics of consent change
+    window.dispatchEvent(new Event('cookieConsentChanged'))
   }
 
   const handleAccept = () => {

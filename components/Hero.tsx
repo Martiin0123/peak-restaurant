@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, MapPin, Clock, Utensils } from "lucide-react";
 import Image from "next/image";
@@ -21,6 +22,15 @@ import { useLanguage } from "./LanguageProvider";
  */
 export function Hero() {
   const { t, language } = useLanguage();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -43,8 +53,8 @@ export function Hero() {
               priority
               fetchPriority="high"
               className="object-cover object-center"
-              sizes="100vw"
-              quality={75}
+              sizes="(max-width: 768px) 100vw, 100vw"
+              quality={isMobile ? 65 : 75}
             />
           </div>
         </div>
@@ -149,35 +159,31 @@ export function Hero() {
       </div>
 
       {/* 3. SCROLL INDICATOR */}
-      {/* Mobile: Centered swipe indicator */}
-      <motion.div
-        style={{ opacity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 sm:hidden"
-      >
-        <span className="text-white/60 text-xs uppercase tracking-wider">
-          {t.hero.scroll}
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
+      {/* Mobile: Simplified static indicator for better performance */}
+      {!isMobile ? (
+        <>
+          {/* Desktop: Left-aligned vertical indicator */}
+          <motion.div
+            style={{ opacity }}
+            className="hidden sm:flex absolute bottom-8 left-8 z-20 items-center gap-4"
+          >
+            <span
+              className="text-white/40 text-xs uppercase tracking-[0.2em] rotate-180 py-2"
+              style={{ writingMode: "vertical-rl" }}
+            >
+              {t.hero.scroll}
+            </span>
+            <div className="h-16 w-[1px] bg-gradient-to-b from-white/0 via-white/40 to-white/0" />
+          </motion.div>
+        </>
+      ) : (
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 sm:hidden">
+          <span className="text-white/60 text-xs uppercase tracking-wider">
+            {t.hero.scroll}
+          </span>
           <ArrowDown size={24} className="text-white/60" />
-        </motion.div>
-      </motion.div>
-
-      {/* Desktop: Left-aligned vertical indicator */}
-      <motion.div
-        style={{ opacity }}
-        className="hidden sm:flex absolute bottom-8 left-8 z-20 items-center gap-4"
-      >
-        <span
-          className="text-white/40 text-xs uppercase tracking-[0.2em] rotate-180 py-2"
-          style={{ writingMode: "vertical-rl" }}
-        >
-          {t.hero.scroll}
-        </span>
-        <div className="h-16 w-[1px] bg-gradient-to-b from-white/0 via-white/40 to-white/0" />
-      </motion.div>
+        </div>
+      )}
     </section>
   );
 }
