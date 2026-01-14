@@ -3,16 +3,6 @@
  * Only tracks if analytics consent is given
  */
 
-declare global {
-  interface Window {
-    gtag?: (
-      command: string,
-      targetId: string,
-      config?: Record<string, any>
-    ) => void
-  }
-}
-
 /**
  * Track a page view
  */

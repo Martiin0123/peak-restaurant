@@ -7,17 +7,6 @@ import Script from 'next/script'
 // Get this from: https://analytics.google.com/
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX'
 
-declare global {
-  interface Window {
-    gtag: (
-      command: string,
-      targetId: string,
-      config?: Record<string, any>
-    ) => void
-    dataLayer: any[]
-  }
-}
-
 function hasAnalyticsConsent(): boolean {
   if (typeof window === 'undefined') return false
   const consent = localStorage.getItem('cookieConsent')
