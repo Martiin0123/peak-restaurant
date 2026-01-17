@@ -93,7 +93,7 @@ export function Events() {
               {/* Action */}
               <div className="lg:col-span-3 flex justify-start lg:justify-end">
                 <a
-                  href="/Speisekarte.pdf"
+                  href="/Peak-Speisekarte.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative w-24 h-24 rounded-full border border-white/10 flex items-center justify-center group-hover:scale-110 transition-all duration-500 bg-white/5 group-hover:bg-taupe group-hover:border-taupe group-hover:shadow-[0_0_30px_0_rgba(193,168,125,0.6)]"
@@ -170,7 +170,7 @@ export function Events() {
               {/* Action */}
               <div className="lg:col-span-3 flex justify-start lg:justify-end">
                 <a
-                  href="/Speisekarte.pdf"
+                  href="/Peak-Speisekarte.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative w-24 h-24 rounded-full border border-white/10 flex items-center justify-center group-hover:scale-110 transition-all duration-500 bg-white/5 group-hover:bg-taupe group-hover:border-taupe group-hover:shadow-[0_0_30px_0_rgba(193,168,125,0.6)]"

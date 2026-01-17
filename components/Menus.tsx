@@ -18,7 +18,7 @@ export function Menus() {
   const { t } = useLanguage();
 
   const handleMenuClick = () => {
-    const pdfPath = "/Speisekarte.pdf";
+    const pdfPath = "/Peak-Speisekarte.pdf";
     window.open(pdfPath, "_blank");
   };
 

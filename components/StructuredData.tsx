@@ -68,11 +68,11 @@ export function StructuredData() {
     },
     url: "https://peak-restaurant.at",
     telephone: "+43 5444 5255",
-    menu: "https://peak-restaurant.at/Speisekarte.pdf",
+    menu: "https://peak-restaurant.at/Peak-Speisekarte.pdf",
     acceptsReservations: "true",
     hasMenu: {
       "@type": "Menu",
-      url: "https://peak-restaurant.at/Speisekarte.pdf",
+      url: "https://peak-restaurant.at/Peak-Speisekarte.pdf",
       inLanguage: ["de", "en"],
     },
     openingHoursSpecification: [
