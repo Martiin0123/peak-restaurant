@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CookieConsent } from "@/components/CookieConsent";
+import { SeasonClosurePopup } from "@/components/SeasonClosurePopup";
 import { SkipLink } from "@/components/SkipLink";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { StructuredData } from "@/components/StructuredData";
@@ -118,6 +119,7 @@ export default function RootLayout({
             <Analytics />
           </div>
           <CookieConsent />
+          <SeasonClosurePopup />
           <GoogleAnalytics />
         </LanguageProvider>
       </body>
