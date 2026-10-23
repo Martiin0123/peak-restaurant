@@ -105,10 +105,18 @@ export const translations = {
         parking: 'Parkplätze vorhanden',
       },
     },
+    vouchers: {
+      eyebrow: 'Geschenkidee',
+      title: 'Gutscheine',
+      description:
+        'Verschenken Sie einen Abend im PEAK – Gutscheine für Restaurantbesuche online kaufen und genießen.',
+      cta: 'Gutschein kaufen',
+    },
     reservation: {
       title: 'Jetzt Tisch Reservieren',
       subtitle: 'Erleben Sie kulinarische Exzellenz im PEAK',
     },
+
     footer: {
       social: 'Folgen Sie uns',
       newsletter: {
@@ -514,10 +522,18 @@ export const translations = {
         parking: 'Parking available',
       },
     },
+    vouchers: {
+      eyebrow: 'Gift Idea',
+      title: 'Vouchers',
+      description:
+        'Give the gift of an evening at PEAK – buy restaurant vouchers online and enjoy.',
+      cta: 'Buy a voucher',
+    },
     reservation: {
       title: 'Reserve Your Table Now',
       subtitle: 'Experience culinary excellence at PEAK',
     },
+
     footer: {
       social: 'Follow Us',
       newsletter: {

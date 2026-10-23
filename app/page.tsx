@@ -43,7 +43,15 @@ const FindUs = dynamic(
     ssr: true,
   }
 );
+const Vouchers = dynamic(
+  () =>
+    import("@/components/Vouchers").then((mod) => ({ default: mod.Vouchers })),
+  {
+    ssr: true,
+  }
+);
 const ReservationCTA = dynamic(
+
   () =>
     import("@/components/ReservationCTA").then((mod) => ({
       default: mod.ReservationCTA,
@@ -96,6 +104,7 @@ export default function Home() {
         <Gallery />
         <FAQ />
         <FindUs />
+        <Vouchers />
         <ReservationCTA />
         <Footer />
       </Suspense>
