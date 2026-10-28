@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 
-const STORAGE_KEY = "seasonClosurePopupDismissed-v1";
+const STORAGE_KEY = "seasonClosurePopupDismissed-v2";
 
 export function SeasonClosurePopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,13 +65,13 @@ export function SeasonClosurePopup() {
               <div className="mt-4 space-y-4 text-dark/80 leading-relaxed">
                 <p>
                   Wir haben aktuell geschlossen und freuen uns, unsere Gäste ab
-                  dem <span className="font-semibold text-dark">26.11.2026</span>{" "}
+                  dem <span className="font-semibold text-dark">25.11.2026</span>{" "}
                   wieder willkommen zu heißen.
                 </p>
                 <p className="border-t border-dark/10 pt-4">
                   We are currently closed for the summer season and are happy to
                   welcome our guests again from{" "}
-                  <span className="font-semibold text-dark">26.11.2026</span>.
+                  <span className="font-semibold text-dark">25.11.2026</span>.
                 </p>
               </div>
             </div>
