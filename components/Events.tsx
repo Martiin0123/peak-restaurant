@@ -144,22 +144,20 @@ export function Events() {
                     id="fondue-title"
                     className="text-4xl md:text-5xl font-bold group-hover:text-taupe transition-colors duration-300"
                   >
-                    {language === "de" ? "Fondue-Abend" : "Fondue Night"}
+                    Fondue Chinoise
                   </h3>
                 </div>
                 <p className="text-white/70 text-lg leading-relaxed max-w-xl border-l-2 border-white/10 pl-6 group-hover:border-taupe transition-colors mb-6">
                   {language === "de"
-                    ? "Traditionelles Schweizer Fondue mit zartem Fleisch, fein aromatisierter Bouillon und ausgewählten Beilagen. Ein geselliger Genuss jeden Donnerstag."
-                    : "Traditional Swiss fondue with tender meat, delicately flavored broth and selected side dishes. A convivial delight every Thursday."}
+                    ? "Fondue chinoise mit Suppe: zartes Fleisch wird am Tisch in heißer, fein aromatisierter Bouillon gegart, dazu ausgewählte Beilagen. Kein Käsefondue. Ein geselliger Genuss jeden Donnerstag."
+                    : "Fondue chinoise with soup: tender meat cooked at the table in a delicately flavored hot broth, with selected side dishes. Not a cheese fondue. A convivial delight every Thursday."}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <span className="px-4 py-2 bg-white/5 border border-white/20 rounded-full text-sm text-white/80">
-                    {language === "de"
-                      ? "Schweizer Tradition"
-                      : "Swiss Tradition"}
+                    {language === "de" ? "Kein Käsefondue" : "Not a cheese fondue"}
                   </span>
                   <span className="px-4 py-2 bg-white/5 border border-white/20 rounded-full text-sm text-white/80">
-                    {language === "de" ? "Frische Bouillon" : "Fresh Broth"}
+                    {language === "de" ? "Heiße Suppe" : "Hot broth"}
                   </span>
                   <span className="px-4 py-2 bg-white/5 border border-white/20 rounded-full text-sm text-white/80">
                     {language === "de" ? "Zartes Fleisch" : "Tender Meat"}

@@ -48,7 +48,7 @@ export function FAQ() {
           {
             question: "Was sind Ihre Öffnungszeiten?",
             answer:
-              "Wir sind täglich ab 17:00 Uhr geöffnet. Spezielle Öffnungszeiten können an Feiertagen variieren. Wir empfehlen eine Reservierung, besonders für unseren beliebten Fondue-Donnerstag.",
+              "Wir sind täglich ab 17:00 Uhr geöffnet. Spezielle Öffnungszeiten können an Feiertagen variieren. Wir empfehlen eine Reservierung, besonders für unseren beliebten Donnerstag mit Fondue chinoise: Fleisch in heißer Suppe, kein Käsefondue.",
           },
           {
             question: "Muss ich reservieren?",
@@ -101,7 +101,7 @@ export function FAQ() {
           {
             question: "What are your opening hours?",
             answer:
-              "We are open daily from 5:00 PM. Special hours may apply on holidays. We recommend making a reservation, especially for our popular Thursday Fondue Night.",
+              "We are open daily from 5:00 PM. Special hours may apply on holidays. We recommend making a reservation, especially for our popular Thursday Fondue Chinoise: meat in hot broth, not a cheese fondue.",
           },
           {
             question: "Do I need a reservation?",

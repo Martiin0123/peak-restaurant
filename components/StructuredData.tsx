@@ -137,11 +137,11 @@ export function StructuredData() {
   const fondueEventSchema = {
     "@context": "https://schema.org",
     "@type": "FoodEvent",
-    name: language === "de" ? "Fondue-Abend" : "Fondue Night",
+    name: "Fondue Chinoise",
     description:
       language === "de"
-        ? "Traditionelles Schweizer Fondue mit zartem Fleisch, fein aromatisierter Bouillon und ausgewählten Beilagen. Jeden Donnerstag ein geselliger Genuss."
-        : "Traditional Swiss fondue with tender meat, delicately flavored broth and selected side dishes. A convivial delight every Thursday.",
+        ? "Fondue chinoise mit Suppe: zartes Fleisch wird am Tisch in heißer, fein aromatisierter Bouillon gegart, dazu ausgewählte Beilagen. Kein Käsefondue. Jeden Donnerstag ein geselliger Genuss."
+        : "Fondue chinoise with soup: tender meat cooked at the table in a delicately flavored hot broth, with selected side dishes. Not a cheese fondue. A convivial delight every Thursday.",
     image: "https://peak-restaurant.at/Fondue.jpg",
     startDate: "2024-01-01",
     endDate: "2026-04-19",

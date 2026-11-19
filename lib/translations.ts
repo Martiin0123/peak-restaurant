@@ -32,7 +32,7 @@ export const translations = {
       hoursValue: 'Montag - Sonntag: 18:00 - 21:00 Uhr (Warme Küche)',
       addressValue: 'Dorfstraße 22, 6561 Ischgl',
       phoneValue: '+43 5444 5255',
-      fondueNight: 'Jeden Donnerstag: Fondue Abend',
+      fondueNight: 'Jeden Donnerstag: Fondue Chinoise mit Suppe',
     },
     events: {
       title: 'Events',
@@ -449,7 +449,7 @@ export const translations = {
       hoursValue: 'Monday - Sunday: 6:00 PM - 9:00 PM (Kitchen)',
       addressValue: 'Dorfstraße 22, 6561 Ischgl',
       phoneValue: '+43 5444 5255',
-      fondueNight: 'Every Thursday: Fondue Night',
+      fondueNight: 'Every Thursday: Fondue Chinoise with soup',
     },
     events: {
       title: 'Events',

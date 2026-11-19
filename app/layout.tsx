@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: "/Fondue.jpg",
         width: 1200,
         height: 630,
-        alt: "PEAK Restaurant - Traditional Swiss Fondue",
+        alt: "PEAK Restaurant - Fondue Chinoise mit Suppe, kein Käsefondue",
       }
     ],
   },
