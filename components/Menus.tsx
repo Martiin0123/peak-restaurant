@@ -103,7 +103,7 @@ export function Menus() {
                     {t.menus.ctaButton}
                   </span>
                   <span className="text-xs text-white/50 uppercase tracking-widest mt-0.5">
-                    PDF / 2.4 MB
+                    PDF / 1.4 MB
                   </span>
                 </div>
 
